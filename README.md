@@ -1,2 +1,5 @@
-* https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbkxQdTZac2JncW5fLUxXYUlhRzNFM2ZGWF9NZ3xBQ3Jtc0trWkQ3SlZ1SWVDMGhwQWMxN0tWU1NxdWFOMUkzLVlmTU5tU0hHRWFSbWYzdER4TS1SREl2OTJNWUpQT2xRU19BWWdTYlNuTzl4U3RTNzNScDFxdjgyZDlfQ2lEU2N2TldjLWZpY2RoZ3duU0pBd1RzRQ&q=https%3A%2F%2Ffiles.speakerdeck.com%2Fpresentations%2Fc1aa83b70bc8444c9272be09eda199a8%2Fsam.0_kep.pdf&v=mSD88FuST80
-* 
+
+
+
+* https://www.youtube.com/watch?v=mSD88FuST80
+* https://github.com/sam0kim/container-internal
