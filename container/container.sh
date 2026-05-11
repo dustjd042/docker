@@ -7,14 +7,8 @@ echo "1" > /sys/fs/cgroup/cpu/$CGROUP_NAME/cgroup.procs;
 echo "1" > /sys/fs/cgroup/memory/$CGROUP_NAME/cgroup.procs;
 
 # 오버레이 마운트
-mkdir /$CGROUP_NAME;
-mkdir /$CGROUP_NAME/container;
-mkdir /$CGROUP_NAME/work;
-mkdir /$CGROUP_NAME/merge;
-
-mount -t overlay overlay -o \
-lowerdir=/tmp/tools:/tmp/myroot,\
-upperdir=/$CGROUP_NAME/container,workdir=/$CGROUP_NAME/work /$CGROUP_NAME/merge
+mkdir -p /$CGROUP_NAME/{container,work,merge}
+mount -t overlay overlay -o lowerdir=/tmp/tools:/tmp/myroot, upperdir=/$CGROUP_NAME/container, workdir=/$CGROUP_NAME/work /$CGROUP_NAME/merge
 
 # pivot_root
 mkdir -p /$CGROUP_NAME/merge/put_old
