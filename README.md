@@ -6,9 +6,14 @@
 ## chroot
 * 악의적인 사용자에게 사용을 제한하기 위한 목적으로 등장
 * Docker 이미지 파일 시스템 추출 및 chroot 접근 가능
+  ```
+  mkdir nginx-root
+  docker export $(docker create nginx) | tar -C nginx-root -xvf -
+  chroot nginx-root /bin/sh
+  ```
 * 문제점 
   1. 네트워크 환경 등 격리 불가
-  2. 격리된 환경에서 탈옥 가능 (escape_chroot.c)
+  2. 격리된 환경에서 탈옥 가능 [escape_chroot.c](./chroot/escape_chroot.c)
 
 ## pivot_root
 * 최상위 루트 파일 시스템 피봇
