@@ -7,25 +7,26 @@
 * root 계정 전환
   ```
   sudo su
+  cd /tmp
   ```
 
 * 이미지 파일 구성
   ```
   wget https://raw.githubusercontent.com/dustjd042/container-without-docker/main/container/image.sh
-  bash image.sh
+  bash /tmp/cimage.sh
   ```
   
 * 네트워크 구성 
   ```
   wget https://raw.githubusercontent.com/dustjd042/container-without-docker/main/container/network.sh
-  bash network.sh
+  bash /tmp/cnetwork.sh
   ```
   
 * 자원 통제 구성
   ```
   wget https://raw.githubusercontent.com/dustjd042/container-without-docker/main/container/cgroup.sh
-  bash cgroup.sh red
-  bash cgroup.sh blue
+  bash /tmp/ccgroup.sh red
+  bash /tmp/ccgroup.sh blue
   ```
 
 * 컨테이너 구성
@@ -33,21 +34,35 @@
   wget https://raw.githubusercontent.com/dustjd042/container-without-docker/main/container/container.sh
 
   # red namespace 컨테이너 (별도 터미널에서 실행)
+  sudo su
   unshare -m -u -i -fp nsenter --net=/var/run/netns/red /bin/sh
-  bash container.sh red
+  bash /tmp/container.sh red
 
   # blue namespace 컨테이너 (별도 터미널에서 실행)
+  sudo su
   unshare -m -u -i -fp nsenter --net=/var/run/netns/blue /bin/sh
-  bash container.sh blue
+  bash /tmp/container.sh blue
   ```
 
+### 테스트
 * 호스트, red, blue hostname 비교
+  ```
+  hostname
+  ```
 
 * 호스트, red, blue 루트 디렉토리 비교
-
+  ```
+  ls /
+  ```
+  
 * red, blue 컨테이너 ping 테스트
-
-* red, blue 부하 테스트
+  ```
+  # red -> blue
+  ping 11.11.11.3
+  
+  # blue -> red
+  ping 11.11.11.2
+  ```
 
 ## 리눅스 주요 명령어
 ### chroot
