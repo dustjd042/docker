@@ -1,22 +1,24 @@
+#!/bin/bash
+
+CGROUP_NAME=$1
 
 # PID namespace 통해 프로세스가 1로 보이기 때문에, PID(1)을 cgroup에 할당
-echo "1" > /sys/fs/cgroup/cpu/red/cgroup.procs;
-echo "1" > /sys/fs/cgroup/memory/red/cgroup.procs;
+echo "1" > /sys/fs/cgroup/cpu/$CGROUP_NAME/cgroup.procs;
+echo "1" > /sys/fs/cgroup/memory/$CGROUP_NAME/cgroup.procs;
 
 # 오버레이 마운트
-mkdir /redfs;
-mkdir /redfs/container;
-mkdir /redfs/work;
-mkdir /redfs/merge;
+mkdir /$CGROUP_NAME;
+mkdir /$CGROUP_NAME/container;
+mkdir /$CGROUP_NAME/work;
+mkdir /$CGROUP_NAME/merge;
 
 mount -t overlay overlay -o \
 lowerdir=/tmp/tools:/tmp/myroot,\
-upperdir=/redfs/container,workdir=/redfs/work \
-/redfs/merge
+upperdir=/$CGROUP_NAME/container,workdir=/$CGROUP_NAME/work /$CGROUP_NAME/merge
 
 # pivot_root
-mkdir -p /redfs/merge/put_old
-cd /redfs/merge;
+mkdir -p /$CGROUP_NAME/merge/put_old
+cd /$CGROUP_NAME/merge;
 pivot_root . put_old;
 cd /;
 
@@ -25,4 +27,4 @@ mount -t proc proc /proc;
 umount -l put_old;
 rm -rf put_old
 
-hostname RED
+hostname $CGROUP_NAME
