@@ -33,6 +33,7 @@ cp /lib/x86_64-linux-gnu/{libcap.so.2,libidn.so.11,libresolv.so.2,libc.so.6} too
 cp /usr/lib/x86_64-linux-gnu/libnettle.so.6 tools/usr/lib/x86_64-linux-gnu/
 
 # stress
+apt install -y stress
 cp /usr/bin/stress tools/usr/bin/
 cp /lib/x86_64-linux-gnu/{libm.so.6,libc.so.6} tools/lib/x86_64-linux-gnu/
 cp /lib64/ld-linux-x86-64.so.2 tools/lib64/
