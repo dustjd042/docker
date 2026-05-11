@@ -73,7 +73,7 @@
   docker export $(docker create nginx) | tar -C nginx-root -xvf -
   chroot nginx-root /bin/sh
   ```
-* 문제점 
+* 아래와 같은 문제점으로 pivot_root 및 각종 namespace 활용
   1. 네트워크 환경 등 격리 불가
   2. 격리된 환경에서 탈옥 가능 [(escape_chroot.c)](./chroot/escape_chroot.c)
 
