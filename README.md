@@ -13,7 +13,7 @@
   ```
 * 문제점 
   1. 네트워크 환경 등 격리 불가
-  2. 격리된 환경에서 탈옥 가능 [escape_chroot.c](./chroot/escape_chroot.c)
+  2. 격리된 환경에서 탈옥 가능 [(escape_chroot.c)](./chroot/escape_chroot.c)
 
 ## pivot_root
 * 최상위 루트 파일 시스템 피봇
@@ -44,7 +44,7 @@
 * UID/GID 넘버스페이스 격리
 * 부모-자식 네임스페이스의 중첩 구조
 * 컨테이너에서 루트 권한 문제 해결
-* 도커의 경우 기본 설정 USER namespace 미사용 (보안 주의 필요)
+* 도커의 경우 기본 설정 USER namespace 미사용 (**보안 주의 필요**)
 
 ## Cgroups
 * 프로세스가 사용하는 리소스 통제
