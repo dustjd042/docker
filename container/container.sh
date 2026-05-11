@@ -26,4 +26,5 @@ mount -t proc proc /proc;
 umount -l put_old;
 rm -rf put_old
 
+# 호스트명 설정
 hostname $CGROUP_NAME
